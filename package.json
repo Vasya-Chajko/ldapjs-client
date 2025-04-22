@@ -14,7 +14,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/zont/ldapjs-client.git"
+    "url": "https://github.com/Vasya-Chajko/ldapjs-client.git#npm"
   },
   "main": "src/index.js",
   "scripts": {
