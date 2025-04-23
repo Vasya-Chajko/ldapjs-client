@@ -32,11 +32,11 @@ class Parser extends EventEmitter {
         ber.readSequence();
       } catch (e) {
         this.emit('error', e);
-        return;
+        return buffer;
       }
       
       if (ber.remain < ber.length || ber.length === 0) {
-        return;
+        return buffer;
       }
       
       let nextMessages = null;
@@ -55,7 +55,7 @@ class Parser extends EventEmitter {
       }
       
       if (nextMessages === null) {
-        break;
+        return null;
       } else {
         buffer = nextMessages;
       }
@@ -81,9 +81,7 @@ class Parser extends EventEmitter {
       return;
     }
     
-    const messages = this.buffer;
-    this.buffer = null;
-    this.parseLoop(messages);
+    this.buffer = this.parseLoop(this.buffer);
   }
 }
 
