@@ -35,6 +35,10 @@ class Parser extends EventEmitter {
         return;
       }
       
+      if (ber.remain < ber.length || ber.length === 0) {
+        return;
+      }
+      
       let nextMessages = null;
       if (ber.remain > ber.length) {
         nextMessages = buffer.slice(ber.offset + ber.length);
